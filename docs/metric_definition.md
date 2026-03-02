@@ -13,7 +13,7 @@ This document defines all KPIs used in the **Forecast & Inventory Risk Analytics
 **Definition:**  
 Difference between actual and forecast demand.
 
-$\
+\$
 Absolute\ Error = | Actual - Forecast |
 \$
 
