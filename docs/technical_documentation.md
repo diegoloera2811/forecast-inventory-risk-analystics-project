@@ -91,7 +91,7 @@ $$|Actual - Forecast|$$
 
 Weighted MAPE:
 
-$$ \frac{ \sum { \left( |Actual - Forecast| \right) } } { \sum { (Actual) } } $$
+$$ \frac{ \sum { \left( | \text{Actual Units Sold} - Forecast| \right) } } { \sum { ( \text{Actual Units Sols} ) } } $$
 
 Days of Inventory:
 
