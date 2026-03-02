@@ -47,7 +47,6 @@ Raw Daily Data → Staging Tables → Fact Tables → SQL Views (Semantic Layer)
 
 ### Forecast Metrics
 - **MAPE (Mean Absolute Percentage Error)**
-- **MAE (Mean Absolute Error)**
 - Weighted vs non-weighted analysis
 
 ### Inventory Metrics
