@@ -87,7 +87,7 @@ Key Calculations:
 
 Absolute Error:
 
-$$| \ Actual \ - \ Forecast \ |$$
+$$| \ \text{Actual Units Sold} \ - \ Forecast \ |$$
 
 Weighted MAPE:
 
