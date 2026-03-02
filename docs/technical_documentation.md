@@ -99,11 +99,11 @@ $$ \left( \frac{ \text{Inventory Units} } { \text{Actual Demand} } \right) \left
 
 Inventory Value:
 
-$$Inventory \Units × Unit Cost$$
+$$ \text{Inventory Units} × \text{Unit Cost} $$
 
 Weighted DOI:
 
-$$SUM(DOI × Inventory \Value) / SUM(Inventory \Value)$$
+$$ \frac{ \sum[ \left( DOI × \text{Inventory Value} ) } { \sum{( \text{Inventory Value} )} $$
 
 ---
 
