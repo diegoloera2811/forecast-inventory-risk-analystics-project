@@ -1,6 +1,6 @@
 # Forecast & Inventory Risk Analytics Project
 
-## 1. Project Overview
+## Project Overview
 
 This project simulates a manufacturing supply chain environment and develops an end-to-end analytics solution to evaluate forecast performance and inventory risk exposure at SKU level.
 
@@ -8,7 +8,7 @@ The solution integrates PostgreSQL data modeling, Python-based data generation, 
 
 ---
 
-## 2. Business Problem
+## Business Problem
 
 Manufacturing companies often struggle with:
 
@@ -21,7 +21,7 @@ The objective of this project is to measure forecast performance with key metric
 
 ---
 
-## 3. Data Architecture
+## Data Architecture
 
 The project follows a layered data approach:
 
@@ -43,7 +43,7 @@ Raw Daily Data → Staging Tables → Fact Tables → SQL Views (Semantic Layer)
 
 ---
 
-## 4. KPI Engineering
+## KPI Engineering
 
 ### Forecast Metrics
 - **MAPE (Mean Absolute Percentage Error)**
@@ -62,7 +62,7 @@ A composite risk score combining:
 
 ---
 
-## 5. Analytical Insights (Sample Findings)
+## Analytical Insights (Sample Findings)
 
 - Weighted forecast error: ~18%
 - Top 20% of SKUs account for over 60% of inventory value exposure
@@ -71,7 +71,7 @@ A composite risk score combining:
 
 ---
 
-## 6. Technical Stack
+## Technical Stack
 
 - PostgreSQL (Data Modeling & Transformation)
 - Python (Data Simulation & Automation)
@@ -80,7 +80,7 @@ A composite risk score combining:
 
 ---
 
-## 7. Key Learnings
+## Key Learnings
 
 - Separating transformation logic (SQL) from visualization improves scalability
 - Weighted metrics are critical for fair cross-SKU comparison
@@ -89,7 +89,7 @@ A composite risk score combining:
 
 ---
 
-## 8. Future Improvements
+## Future Improvements
 
 - Introduce daily-level data modeling
 - Implement rolling forecast logic
@@ -98,7 +98,7 @@ A composite risk score combining:
 
 ---
 
-## 9. Dashboard Preview
+## Dashboard Preview
 
 *(Screenshots coming soon)*
 
