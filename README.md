@@ -30,7 +30,7 @@ The project integrates:
 
 Raw Data → Staging → Fact Tables → SQL Views → Power BI
 
-- Idempotent monthly updates (UPSERT)
+- Monthly updates (UPSERT)
 - Centralized KPI definitions
 - Weighted portfolio metrics
 - Financial prioritization framework
