@@ -36,6 +36,7 @@ Raw Daily Data → Staging Tables → Fact Tables → SQL Views (Semantic Layer)
 - `fact_inventory`
 
 ## Data Model
+Granularity: Monthly | SKU-Level
 
 ```mermaid
 erDiagram
