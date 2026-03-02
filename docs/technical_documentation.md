@@ -91,7 +91,7 @@ $$|Actual - Forecast|$$
 
 Weighted MAPE:
 
-$$SUM_(|Actual - Forecast|) / SUM_(Actual)$$
+$$SUM (|Actual - Forecast|) / SUM (Actual)$$
 
 Days of Inventory:
 
