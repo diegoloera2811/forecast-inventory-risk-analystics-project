@@ -1,170 +1,139 @@
-# Metric Definitions
+# 📊 Metric Definitions
 
-This document defines all key performance indicators (KPIs) used in the Forecast & Inventory Risk Analytics Project.
+This document defines all KPIs used in the **Forecast & Inventory Risk Analytics Project**.
 
-Granularity: Monthly, SKU-level (month, product_id) unless otherwise specified.
+**Granularity:** Monthly, SKU-level (`month`, `product_id`)
 
-------------------------------------------------------------
+---
 
-1) Forecast Accuracy Metrics
+# 1️⃣ Forecast Accuracy Metrics
 
-1.1 Absolute Error
+## 1.1 Absolute Error
 
-Definition:
-Absolute difference between actual demand and forecast demand.
+**Definition:**  
+Difference between actual and forecast demand.
 
-Formula:
-ABS(actual_units_sold - forecast_units)
+\[
+Absolute\ Error = | Actual - Forecast |
+\]
 
-Business interpretation:
-Measures how far the forecast was from reality in units, regardless of direction.
+**Business Meaning:**  
+Measures magnitude of forecast deviation in units.
 
-------------------------------------------------------------
+---
 
-1.2 MAPE (Mean Absolute Percentage Error)
+## 1.2 MAPE (Mean Absolute Percentage Error)
 
-Definition:
-Absolute percentage deviation between actual and forecast demand.
+\[
+MAPE = \frac{|Actual - Forecast|}{Actual}
+\]
 
-Formula:
-ABS(actual_units_sold - forecast_units) / actual_units_sold
+**Weighted Portfolio MAPE:**
 
-Global Weighted MAPE formula:
-SUM(ABS(actual_units_sold - forecast_units)) 
-/ SUM(actual_units_sold)
+\[
+Weighted\ MAPE = \frac{\sum |Actual - Forecast|}{\sum Actual}
+\]
 
-Business interpretation:
-Low MAPE → forecast is stable and reliable.
-High MAPE → demand volatility or poor forecasting inputs.
+**Why Weighted?**  
+Prevents low-volume SKUs from distorting portfolio accuracy.
 
-Limitations:
-- Undefined when actual_units_sold = 0.
-- Can be inflated for low-volume SKUs.
+**Interpretation:**
+- < 20% → Strong forecast reliability  
+- 20–35% → Moderate performance  
+- > 35% → Forecast instability  
 
-------------------------------------------------------------
+---
 
-1.3 Forecast Accuracy (%)
+## 1.3 Forecast Accuracy
 
-Definition:
-Accuracy derived from Weighted MAPE.
+\[
+Forecast\ Accuracy = 1 - Weighted\ MAPE
+\]
 
-Formula:
-Forecast Accuracy = 1 - Weighted MAPE
+Example:  
+If Weighted MAPE = 0.18 → Forecast Accuracy = 82%
 
-Example:
-If Weighted MAPE = 0.18 → Forecast Accuracy ≈ 82%
+---
 
-------------------------------------------------------------
+## 1.4 MAE (Mean Absolute Error)
 
-1.4 MAE (Mean Absolute Error)
+\[
+MAE = \frac{1}{n} \sum |Actual - Forecast|
+\]
 
-Definition:
-Average absolute forecast error in units.
+**Interpretation:**  
+Measures forecast deviation in units rather than percentage.
 
-Formula:
-AVG(ABS(actual_units_sold - forecast_units))
+---
 
-Business interpretation:
-Represents the typical deviation in units.
-Useful for operational production planning.
+# 2️⃣ Inventory Metrics
 
-------------------------------------------------------------
+## 2.1 Inventory Value (MXN)
 
-2) Inventory Metrics
+\[
+Inventory\ Value = Inventory\ Units \times Unit\ Cost
+\]
 
-2.1 Ending Inventory Units
+Represents working capital exposure.
 
-Definition:
-Units available at the end of the month.
+---
 
-Source:
-fact_inventory.ending_inventory_units
+## 2.2 Days of Inventory (DOI)
 
-------------------------------------------------------------
+\[
+DOI = \left( \frac{Inventory\ Units}{Actual\ Demand} \right) \times 30
+\]
 
-2.2 Inventory Value (MXN)
+**Interpretation:**
+- < 30 days → Stockout risk  
+- 30–70 days → Healthy coverage  
+- > 90 days → Overstock risk  
 
-Definition:
-Financial exposure tied to inventory.
+---
 
-Formula:
-ending_inventory_units * unit_cost_mxn
+## 2.3 Weighted DOI (Portfolio Level)
 
-Business interpretation:
-Measures working capital tied up in stock.
+\[
+Weighted\ DOI = \frac{\sum (DOI \times Inventory\ Value)}{\sum Inventory\ Value}
+\]
 
-------------------------------------------------------------
+Weights coverage by financial exposure.
 
-2.3 Days of Inventory (DOI)
+---
 
-Definition:
-Estimated number of days inventory can cover demand.
+# 3️⃣ Risk Framework
 
-Formula:
-(ending_inventory_units / actual_units_sold) * 30
+## 3.1 Composite Risk Score (Conceptual)
 
-Business interpretation:
-< 30 days → potential stockout risk
-30–70 days → healthy coverage
-> 90 days → overstock risk
+\[
+Risk\ Score = f(MAPE, DOI, Inventory\ Value)
+\]
 
-Limitation:
-Assumes relatively stable demand.
+This score prioritizes SKUs based on:
+- Forecast instability  
+- Coverage excess  
+- Financial impact  
 
-------------------------------------------------------------
+It is designed for **decision prioritization**, not prediction.
 
-2.4 Weighted DOI (Portfolio Level)
+---
 
-Definition:
-Portfolio-level DOI weighted by financial exposure.
+# 4️⃣ Aggregation Rules
 
-Conceptual Formula:
-SUM(DOI * Inventory Value) / SUM(Inventory Value)
+Base grain: SKU-Month  
 
-Business interpretation:
-Represents the real inventory coverage considering cost exposure.
+Portfolio level:
+- Inventory Value → SUM  
+- DOI → Weighted Average  
+- Forecast Accuracy → Weighted MAPE  
 
-------------------------------------------------------------
+---
 
-3) Risk Framework
+# 5️⃣ Design Principles
 
-3.1 Composite Risk Score
+- Use weighted metrics to avoid distortion  
+- Combine operational + financial KPIs  
+- Keep metric logic centralized in SQL  
+- Use BI layer for visualization only  
 
-Definition:
-A prioritization metric combining operational and financial risk.
-
-Inputs:
-- Forecast Error (MAPE or Abs Error)
-- DOI
-- Inventory Value
-
-Purpose:
-Identify SKUs requiring immediate review.
-
-Example decision logic:
-High DOI + High Inventory Value → Overstock risk
-High MAPE + High DOI → Forecast and policy issue
-High MAPE + Low DOI → Volatility but low financial exposure
-
-------------------------------------------------------------
-
-4) Aggregation Rules
-
-Base granularity:
-month + product_id
-
-Product Family level:
-Inventory Value → SUM
-DOI → AVG or Weighted DOI
-Forecast Accuracy → Weighted MAPE preferred
-
-------------------------------------------------------------
-
-5) Design Principles
-
-- Weighted metrics prevent small-SKU distortion.
-- Financial prioritization is critical.
-- KPI logic should live in SQL (semantic layer).
-- BI layer consumes clean views only.
-
-------------------------------------------------------------
+---
