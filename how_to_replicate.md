@@ -51,7 +51,7 @@ Then run the script: '04_upsert_pipeline.sql'
 
 ### Option B – Generate Data with Python (random results)
 
-Run the notebooks inside the `/python` folder to generate:
+Run the notebooks inside the `/data` folder to generate:
 
 - `dim_product.csv`
 - `fact_sales.csv`
