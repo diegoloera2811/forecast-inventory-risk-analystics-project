@@ -87,7 +87,7 @@ Key Calculations:
 
 Absolute Error:
 
-$$|Actual - Forecast|$$
+$$| \ Actual \ - \ Forecast \ |$$
 
 Weighted MAPE:
 
