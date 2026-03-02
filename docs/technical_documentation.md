@@ -95,7 +95,7 @@ $$\frac{\sum {(|Actual - Forecast|)}} {\sum {(Actual)}}$$
 
 Days of Inventory:
 
-$$\(\frac{Inventory Units} {Actual Demand}\) \(30\)$$
+$$\left( \frac{Inventory Units} {Actual Demand} \right) \(30\)$$
 
 Inventory Value:
 
