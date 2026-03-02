@@ -24,15 +24,15 @@ Measures magnitude of forecast deviation in units.
 
 ## 1.2 MAPE (Mean Absolute Percentage Error)
 
-$\
+$$
 MAPE = \frac{|Actual - Forecast|}{Actual}
-\$
+$$
 
 **Weighted Portfolio MAPE:**
 
-$\
+$$
 Weighted\ MAPE = \frac{\sum |Actual - Forecast|}{\sum Actual}
-\$
+$$
 
 **Why Weighted?**  
 Prevents low-volume SKUs from distorting portfolio accuracy.
