@@ -95,15 +95,15 @@ $$SUM(|Actual - Forecast|) / SUM(Actual)$$
 
 Days of Inventory:
 
-$$(Inventory Units / Actual Demand) × 30$$
+$$(Inventory \Units / Actual \Demand) × 30$$
 
 Inventory Value:
 
-$$Inventory Units × Unit Cost$$
+$$Inventory \Units × Unit Cost$$
 
 Weighted DOI:
 
-$$SUM(DOI × Inventory Value) / SUM(Inventory Value)$$
+$$SUM(DOI × Inventory \Value) / SUM(Inventory \Value)$$
 
 ---
 
