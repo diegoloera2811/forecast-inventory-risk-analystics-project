@@ -99,7 +99,7 @@ $$ \left( \frac{ \text{Inventory Units} } { \text{Actual Demand} } \right) \left
 
 Inventory Value:
 
-$$ \text{Inventory Units} \× \ \text{Unit Cost} $$
+$$ \text{Inventory Units} \ × \ \text{Unit Cost} $$
 
 Weighted DOI:
 
