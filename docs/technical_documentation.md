@@ -103,7 +103,7 @@ $$ \text{Inventory Units} \quad × \quad \text{Unit Cost} $$
 
 Weighted DOI:
 
-$$ \frac{ \sum{ \left( DOI × \text{Inventory Value} \right) } } { \sum{( \text{Inventory Value} )} } $$
+$$ \frac{ \sum{ \left( DOI \quad × \quad \text{Inventory Value} \right) } } { \sum{( \text{Inventory Value} )} } $$
 
 ---
 
