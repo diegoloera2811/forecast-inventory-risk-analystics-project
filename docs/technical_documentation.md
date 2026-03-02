@@ -8,6 +8,38 @@ This document summarizes the technical implementation of the Forecast & Inventor
 
 Granularity: Monthly | SKU-Level
 
+```mermaid
+erDiagram
+    dim_product ||--o{ fact_sales : product_id
+    dim_product ||--o{ fact_forecast : product_id
+    dim_product ||--o{ fact_inventory : product_id
+
+    dim_product {
+        text product_id PK
+        text product_name
+        text product_family
+        numeric unit_cost_mxn
+    }
+
+    fact_sales {
+        date month
+        text product_id FK
+        int actual_units_sold
+    }
+
+    fact_forecast {
+        date month
+        text product_id FK
+        int forecast_units
+    }
+
+    fact_inventory {
+        date month
+        text product_id FK
+        int ending_inventory_units
+    }
+```
+
 Core Tables:
 - dim_product
 - fact_sales
@@ -19,6 +51,8 @@ Primary Key:
 
 Foreign Key:
 fact tables → dim_product
+
+
 
 ---
 
