@@ -40,7 +40,6 @@ Raw Data → Staging → Fact Tables → SQL Views → Power BI
 ## 📈 Key Metrics
 
 - Weighted MAPE (Portfolio Forecast Accuracy)
-- MAE (Unit-level deviation)
 - Days of Inventory (DOI)
 - Inventory Financial Exposure (MXN)
 - Composite Risk Segmentation
