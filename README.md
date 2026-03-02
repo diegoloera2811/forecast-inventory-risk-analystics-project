@@ -30,7 +30,7 @@ The project integrates:
 
 Raw Data → Staging → Fact Tables → SQL Views → Power BI
 
-- Idempotent monthly updates (UPSERT)
+- Monthly updates (UPSERT)
 - Centralized KPI definitions
 - Weighted portfolio metrics
 - Financial prioritization framework
@@ -40,7 +40,6 @@ Raw Data → Staging → Fact Tables → SQL Views → Power BI
 ## 📈 Key Metrics
 
 - Weighted MAPE (Portfolio Forecast Accuracy)
-- MAE (Unit-level deviation)
 - Days of Inventory (DOI)
 - Inventory Financial Exposure (MXN)
 - Composite Risk Segmentation
